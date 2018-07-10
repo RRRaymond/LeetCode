@@ -12,14 +12,9 @@ class Solution:
         :type target: int
         :rtype: List[int]
         """
-        left = -1
-        length = len(nums)
-        for i in range(0,length):
+        m_dict = {}
+        for i in range(0, len(nums)):
             other = target - nums[i]
-            if other in nums:
-                left = i
-                right = nums.index(target - nums[i])
-                if right == left:
-                    continue
-                break
-        return [left, right]
+            if other in m_dict:
+                return [i, m_dict[other]]
+            m_dict[nums[i]] = i
